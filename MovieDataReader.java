@@ -1,3 +1,11 @@
+// --== CS400 File Header Information ==--
+// Name: William Langas
+// Email: wlangas@wisc.edu
+// Team: Red
+// Group: CC
+// TA: Xi Ta
+// Lecturer: Gary Dahl
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
