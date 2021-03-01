@@ -91,9 +91,9 @@ public class Movie implements MovieInterface {
             return 0;
             // sort by rating
         } else if (this.getAvgVote() < otherMovie.getAvgVote()) {
-            return +1;
-        } else {
             return -1;
+        } else {
+            return +1;
         }
     }
 
@@ -109,5 +109,4 @@ public class Movie implements MovieInterface {
         movie += " | " + this.avgVote;
         return movie;
     }
-
 }
