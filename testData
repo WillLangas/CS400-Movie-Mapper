@@ -1,3 +1,11 @@
+// --== CS400 File Header Information ==--
+// Name: William Langas
+// Email: wlangas@wisc.edu
+// Team: Red
+// Group: CC
+// TA: Xi Ta
+// Lecturer: Gary Dahl
+
 import java.io.StringReader;
 import java.util.Collections;
 import java.util.List;
@@ -6,12 +14,12 @@ import java.util.List;
  * This class contains a set of tests for the MovieInterface and MovieDataReaderInterface
  * implementation of the Movie Mapper project.
  */
-public class TestMovieAndMovieDataReader {
+public class testData {
 
-    MovieDataReaderInterface readerToTest;
+    MovieDataReaderInterface readerToTest = new MovieDataReader();
 
     public static void main(String[] args) {
-        //(new TestMovieAndMovieDataReader()).runTests();
+        (new testData()).runTests();
     }
 
     /**
@@ -19,7 +27,7 @@ public class TestMovieAndMovieDataReader {
      */
     public void runTests() {
         // instantiate reader to test once it is implemented
-        readerToTest = null; // new MovieDataReader();
+        readerToTest = new MovieDataReader();
 
         // add all tests to this method
         if (this.testReaderNumberOfMovies()) {
@@ -197,6 +205,8 @@ public class TestMovieAndMovieDataReader {
 
             for (int i = 0; i < directorList.length; ++i) {
                 if (!movieList.get(i).getDirector().equals(directorList[i])) {
+                    System.out.println("IS: " + movieList.get(i).getDirector());
+                    System.out.println("SHOULD BE: " + directorList[i]);
                     System.out.println("testGetDirector failed for index " + i);
                     return false;
                 }
