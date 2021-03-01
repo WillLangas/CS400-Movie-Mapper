@@ -113,6 +113,11 @@ public class Main {
         }
 
         private static void ratingMode() {
+          
+          for (int i = 1; i < 11; i++) {
+            backend.addAvgRating(""+i);
+          }
+          
                 while (mode == "rating") {
                   System.out.println("Welcome to rating mode. Enter a number from below to filter by rating. Entering the "
                       + "number will either select or deselect that rating.");
@@ -141,7 +146,7 @@ public class Main {
                     mode = "base";
                   for (int i = 1; i < 11; i++) {
                     if (command.equals(""+i)) {
-                      if (backend.getGenres().contains(""+i)) {
+                      if (backend.getAvgRatings().contains(""+i)) {
                         backend.removeAvgRating(""+i);;
                       } else {
                         backend.addAvgRating(""+i);
