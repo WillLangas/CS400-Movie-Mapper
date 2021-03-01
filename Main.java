@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.zip.DataFormatException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +21,20 @@ public class Main {
         private static Scanner scanner;
 
         public static void main(String [] args) {
+          boolean noError = true;
+          try {
                 backend = new Backend(new String[0]);
+          } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+            noError = false;
+          } catch (IOException f) {
+            System.out.println("IO Exception");
+            noError = false;
+          } catch (DataFormatException d) {
+            System.out.println("Data format issue.");
+            noError = false;
+          }
+          if (noError) {
                 mode = "base";
                 scanner = new Scanner(System.in);
                 boolean running = true;
@@ -34,6 +50,7 @@ public class Main {
                           running = false;
                         }
                 }
+          }
         }
         
         private static String getMovieInfo(MovieInterface movie) {
