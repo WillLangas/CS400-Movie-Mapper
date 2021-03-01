@@ -6,15 +6,19 @@
 // TA: Xi Ta
 // Lecturer: Gary Dahl
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.zip.DataFormatException;
 
+/**
+ * The MovieDataReader class, which reads from a given Reader object and returns a list of Movie
+ * Objects
+ * 
+ * @author Will Langas
+ */
 public class MovieDataReader implements MovieDataReaderInterface {
 
     /**
@@ -28,11 +32,11 @@ public class MovieDataReader implements MovieDataReaderInterface {
      *
      * @param inputFileReader The reader to be used to parse the data
      * @return movies The list of movies
-     * @throws FileNotFoundException If the input file is not found
+     * @throws DataFormatException If the data is formatted incorrectly
      * @throws IOException If there is an issue with the scanner
      */
     @Override public List<MovieInterface> readDataSet(Reader inputFileReader)
-        throws FileNotFoundException, IOException {
+        throws DataFormatException, IOException {
 
         // List of movie objects
         List<MovieInterface> movies = new ArrayList<MovieInterface>(0);
@@ -113,7 +117,7 @@ public class MovieDataReader implements MovieDataReaderInterface {
                 // Skip the runtime, country, and language
                 scnr.next(); // Runtime
 
-                first = scnr.next(); // Country (could be multiple
+                first = scnr.next(); // Country (could be multiple)
                 if (first.startsWith("\"")) {
                     String next = scnr.next();
                     while (!next.endsWith("\"")) {
@@ -121,7 +125,7 @@ public class MovieDataReader implements MovieDataReaderInterface {
                     }
                 }
 
-                scnr.next(); // Language
+                scnr.next(); // Skip Language
 
                 // Grab the director(s)
                 String directors = "";
@@ -185,6 +189,11 @@ public class MovieDataReader implements MovieDataReaderInterface {
                 String avgVoteStr = scnr.next();
                 Float avgVote = Float.parseFloat(avgVoteStr);
                 newMovie.setAvgVote(avgVote);
+
+                // If there are extra columns, throw an exception
+                if (scnr.hasNext()) {
+                    throw new DataFormatException("Data has too many columns");
+                }
 
                 movies.add(newMovie); // Add the movie to the list of movies
                 scnr.close();   // Close the inside scanner to avoid memory leaks or other issues
