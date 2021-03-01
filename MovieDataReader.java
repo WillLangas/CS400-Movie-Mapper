@@ -16,7 +16,7 @@ import java.util.zip.DataFormatException;
 /**
  * The MovieDataReader class, which reads from a given Reader object and returns a list of Movie
  * Objects
- * 
+ *
  * @author Will Langas
  */
 public class MovieDataReader implements MovieDataReaderInterface {
@@ -198,6 +198,7 @@ public class MovieDataReader implements MovieDataReaderInterface {
                 movies.add(newMovie); // Add the movie to the list of movies
                 scnr.close();   // Close the inside scanner to avoid memory leaks or other issues
             }
+            fileScnr.close();
         }  catch (Exception e) {
             System.out.println("Exception " + e + "caught");
             e.printStackTrace();
