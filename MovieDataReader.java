@@ -84,6 +84,13 @@ public class MovieDataReader implements MovieDataReaderInterface {
 
                     next = next.replace("\"", "");
                     genres.add(next);
+
+                    for (int i = 0; i < genres.size(); ++i) {
+                        String original = genres.get(i);
+                        String trimmed = original.trim();
+                        genres.set(i, trimmed);
+                    }
+
                     newMovie.setGenres(genres);
                 } else {
                     genres.add(first);
