@@ -10,12 +10,27 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class MovieDataReader implements MovieDataReaderInterface {
 
+    /**
+     * Default constructor
+     */
+    public MovieDataReader() {
+    }
+
+    /**
+     * Takes a string reader and returns a list of Movie objects from the formatted CSV
+     *
+     * @param inputFileReader The reader to be used to parse the data
+     * @return movies The list of movies
+     * @throws FileNotFoundException If the input file is not found
+     * @throws IOException If there is an issue with the scanner
+     */
     @Override public List<MovieInterface> readDataSet(Reader inputFileReader)
         throws FileNotFoundException, IOException {
 
