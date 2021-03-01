@@ -14,12 +14,12 @@ import java.util.List;
  * This class contains a set of tests for the MovieInterface and MovieDataReaderInterface
  * implementation of the Movie Mapper project.
  */
-public class testData {
+public class TestMovieAndMovieDataReader {
 
     MovieDataReaderInterface readerToTest = new MovieDataReader();
 
     public static void main(String[] args) {
-        (new testData()).runTests();
+        (new TestMovieAndMovieDataReader()).runTests();
     }
 
     /**
@@ -146,9 +146,9 @@ public class testData {
             return false;
         }
         Collections.sort(movieList);
-        double lastRating = 11.0;
+        double lastRating = 0.0;
         for (MovieInterface movie : movieList) {
-            if (movie.getAvgVote() > lastRating) {
+            if (movie.getAvgVote() < lastRating) {
                 // test fails
                 return false;
             }
