@@ -38,7 +38,6 @@ public class MovieDataReader implements MovieDataReaderInterface {
         List<MovieInterface> movies = new ArrayList<MovieInterface>(0);
 
         try {
-
             Scanner fileScnr = new Scanner(inputFileReader); // Create an "outside level" scanner to read lines
             fileScnr.nextLine(); // Remove the columns headers
 
@@ -138,6 +137,7 @@ public class MovieDataReader implements MovieDataReaderInterface {
                     }
 
                     next = next.replace("\"", "");
+                    next = next.trim();
                     directors += next;
                     newMovie.setDirector(directors);
                 } else {
