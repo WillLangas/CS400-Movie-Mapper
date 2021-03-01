@@ -14,12 +14,12 @@ import java.util.List;
  * This class contains a set of tests for the MovieInterface and MovieDataReaderInterface
  * implementation of the Movie Mapper project.
  */
-public class TestMovieAndMovieDataReader {
+public class testData {
 
     MovieDataReaderInterface readerToTest = new MovieDataReader();
 
     public static void main(String[] args) {
-        (new TestMovieAndMovieDataReader()).runTests();
+        (new testData()).runTests();
     }
 
     /**
