@@ -23,9 +23,8 @@ public class MovieDataReader implements MovieDataReaderInterface {
         List<MovieInterface> movies = new ArrayList<MovieInterface>(0);
 
         try {
-            // Open up new file
-            File file = new File("/Users/willlangas/Desktop/ProjectOneFinalApp/movies.csv");
-            Scanner fileScnr = new Scanner(file); // Create an "outside level" scanner to read lines
+
+            Scanner fileScnr = new Scanner(inputFileReader); // Create an "outside level" scanner to read lines
             fileScnr.nextLine(); // Remove the columns headers
 
             // Now loop once for each line
@@ -175,10 +174,7 @@ public class MovieDataReader implements MovieDataReaderInterface {
                 movies.add(newMovie); // Add the movie to the list of movies
                 scnr.close();   // Close the inside scanner to avoid memory leaks or other issues
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-            e.printStackTrace();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             System.out.println("Exception " + e + "caught");
             e.printStackTrace();
         }
