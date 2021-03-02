@@ -22,17 +22,21 @@ public class Frontend {
 
         public static void main(String [] args) {
           Frontend frontend = new Frontend();
-          frontend.run();
+          frontend.run(args);
         }
         
         public Frontend() {
           
         }
         
-        public void run() {
+        public void run(String[] args) {
           boolean noError = true;
           try {
-                backend = new Backend(new String[0]);
+                backend = new Backend(args);
+                
+                for (int i = 1; i < 11; i++) {
+                  backend.addAvgRating(""+i);
+                }
           } catch (FileNotFoundException e) {
             System.out.println("File not found.");
             noError = false;
@@ -66,6 +70,11 @@ public class Frontend {
           boolean noError = true;
           try {
                 backend = b;
+                
+                for (int i = 1; i < 11; i++) {
+                  backend.addAvgRating(""+i);
+                }
+                
           } catch (FileNotFoundException e) {
             System.out.println("File not found.");
             noError = false;
@@ -106,14 +115,15 @@ public class Frontend {
         }
 
         private void baseMode() {
+          int startingIndex = 0;
                 while (mode == "base") {
                   System.out.println("Hello! Welcome to The Movie Mapper! Enter 'x' to exit the program, 'g' to "
                       + "enter genre mode, or 'r' to enter rating mode!");
                   
                   System.out.println("\nTop 3 Movies:");
                   
-                  List<MovieInterface> movies = backend.getThreeMovies(0);
-                  int index = 1;
+                  List<MovieInterface> movies = backend.getThreeMovies(startingIndex);
+                  int index = startingIndex + 1;
                   for (MovieInterface movie : movies) {
                     System.out.println(index + ") " + getMovieInfo(movie));
                     index++;
@@ -127,6 +137,11 @@ public class Frontend {
                     mode = "rating";
                   if (command.equals("x"))
                     mode = "end";
+                  try {
+                    startingIndex = Integer.parseInt(command);
+                  } catch (Exception e) {
+                    
+                  }
                 }
         }
 
@@ -172,10 +187,6 @@ public class Frontend {
         }
 
         private void ratingMode() {
-          
-          for (int i = 1; i < 11; i++) {
-            backend.addAvgRating(""+i);
-          }
           
                 while (mode == "rating") {
                   System.out.println("Welcome to rating mode. Enter a number from below to filter by rating. Entering the "
