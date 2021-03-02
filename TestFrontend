@@ -307,7 +307,7 @@ public class TestFrontend {
       System.setIn(standardIn);
       // add all tests to this method
       String appOutput = outputStreamCaptor.toString();
-      if (frontend != null && appOutput.contains("Valley Girl")) {
+      if (frontend != null && !appOutput.contains("Valley Girl")) {
         // test passes if all genres from the data are displayed on the screen
         return true;
       } else {
