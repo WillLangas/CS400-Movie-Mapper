@@ -9,7 +9,7 @@ Files Written by Me:
 --------------------
 Frontend.java
 -Main frontend driver class.
-TestFrontend.java
+-TestFrontend.java
 -Test class to test the functionality of the frontend.
 
 Additional Contributions:
